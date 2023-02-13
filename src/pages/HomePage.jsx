@@ -45,7 +45,7 @@ function HomePage() {
         <div className="row">
           <div className="col-md-1">
             {/* TODO add onclick={createCar} */}
-            <button className="btn btn-success">Create Car</button>
+            <button className="btn btn-success m-3">Create Car</button>
           </div>
         </div>
         <div className="row">
