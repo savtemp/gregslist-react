@@ -17,10 +17,18 @@ function HomePage() {
 
   let cars = (AppState.cars.map(c => {
     return (
-      <div className="col-md-4" key={c.id} >
+      <div className="col-md-4" key={c.id}>
         <CarCard car={c} />
       </div>
     )
+
+    async function createCar(){
+      try{
+        await carsService.createCar()
+      } catch(error){
+        Pop.error(error.message)
+      }
+    }
   
   }))
 
@@ -34,6 +42,12 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="container my-3">
+        <div className="row">
+          <div className="col-md-1">
+            {/* TODO add onclick={createCar} */}
+            <button className="btn btn-success">Create Car</button>
+          </div>
+        </div>
         <div className="row">
           {cars}
         </div>
