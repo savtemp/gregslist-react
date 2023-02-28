@@ -11,7 +11,8 @@ class ObservableAppState {
   /** @type {import('./models/Car.js').Car[]} */
   cars = []
 
-  activeCar = {}
+  /** @type {import('./models/Car.js').Car | null} */
+  car = null
 
 
   // sets up emits comes from mobx import (popular AppState management app)

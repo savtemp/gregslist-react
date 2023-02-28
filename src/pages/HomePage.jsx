@@ -2,6 +2,7 @@ import { observer } from "mobx-react"
 import React, { useEffect } from "react";
 import { AppState } from "../AppState.js";
 import CarCard from "../components/CarCard.jsx";
+import { Car } from "../models/Car.js";
 import { carsService } from "../services/CarsService.js";
 import Pop from "../utils/Pop.js";
 
@@ -15,20 +16,16 @@ function HomePage() {
     }
   }
 
+  async function createCar(){
+    AppState.car = new Car({})
+  }
+
   let cars = (AppState.cars.map(c => {
     return (
       <div className="col-md-4" key={c.id}>
         <CarCard car={c} />
       </div>
     )
-
-    async function createCar(){
-      try{
-        await carsService.createCar()
-      } catch(error){
-        Pop.error(error.message)
-      }
-    }
   
   }))
 
@@ -45,7 +42,7 @@ function HomePage() {
         <div className="row">
           <div className="col-md-1">
             {/* TODO add onclick={createCar} */}
-            <button className="btn btn-success m-3">Create Car</button>
+            <button className="btn btn-success m-3" onClick={createCar}>Create Car</button>
           </div>
         </div>
         <div className="row">
